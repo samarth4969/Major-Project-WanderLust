@@ -30,7 +30,7 @@ async function main() {
 }
 
 // ---------- VIEWS ----------
-app.set("view engine", "ejs");   // 🔥 FIXED (must have space)
+app.set("view engine", "ejs"); // 🔥 FIXED (must have space)
 app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", ejsMate);
 
@@ -55,10 +55,10 @@ app.use(flash());
 // ---------- PASSPORT (MUST BE IN THIS ORDER) ----------
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));  // authentication
+passport.use(new LocalStrategy(User.authenticate())); // authentication
 
-passport.serializeUser(User.serializeUser());          // 🔥 required for session
-passport.deserializeUser(User.deserializeUser());      // 🔥 required for session
+passport.serializeUser(User.serializeUser()); // 🔥 required for session
+passport.deserializeUser(User.deserializeUser()); // 🔥 required for session
 
 // ---------- GLOBAL FLASH & USER LOCALS ----------
 app.use((req, res, next) => {
@@ -81,4 +81,8 @@ app.all("*", (req, res) => {
 });
 
 // ---------- SERVER ----------
-app.listen(3003, () => console.log("server started on port 3003"));
+const PORT = process.env.PORT || 3003;
+
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});

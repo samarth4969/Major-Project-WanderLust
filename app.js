@@ -75,6 +75,10 @@ app.use("/", userRouter);
 app.use("/", categoryRouter);
 app.use("/search", searchRouter);
 
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 // ---------- ERROR ----------
 app.all("*", (req, res) => {
   res.status(404).render("error.ejs", { message: "Page Not Found" });

@@ -1,92 +1,229 @@
 <nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="/listings"
+      ><i class="fa-regular fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <!-- <a class="nav-link " aria-current="page" href="/">Home</a> -->
-        <a class="nav-link" href="/listings">Explore</a>
-
+        <a class="nav-link explore-link active" href="/listings">Explore</a>
       </div>
+      <% if (locals.showSearch) { %>
       <div class="search-container position-relative">
-        <form class="d-flex align-items-center" method="post" action="/search" >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="search-icon feather feather-search">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input class="form-control search-input ps-5" type="search"
-                   placeholder="Search anything..." aria-label="Search" name="search">
-            <button class="btn btn-search ms-2" type="submit">Search</button>
+        <form class="d-flex align-items-center" method="post" action="/search">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="search-icon feather feather-search"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+
+          <input
+            class="form-control search-input ps-5"
+            type="search"
+            placeholder="Search anything..."
+            aria-label="Search"
+            name="search"
+          />
+
+          <button class="btn btn-search ms-2" type="submit">Search</button>
         </form>
-    </div>
+      </div>
+      <% } %>
+
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">airbnb your home</a>
+        <a class="nav-link host-link" href="/listings/new">airbnb your home</a>
+
         <% if(!currUser){ %>
-          <a class="nav-link " aria-current="page" href="/signup"><b>Sign Up</b></a>
-          <a class="nav-link" href="/login"><b>Log In</b></a>
-          <% } %>
-            <% if(currUser){ %>
-              <a class="nav-link" href="/logout"><b>Log Out</b></a>
-              <% } %>
+        <a class="nav-link signup-link" href="/signup"><b>Sign Up</b></a>
+        <a class="nav-link login-link" href="/login"><b>Log In</b></a>
+        <% } %> <% if(currUser){ %>
+        <a class="nav-link logout-link" href="/logout"><b>Log Out</b></a>
+
+        <% } %>
       </div>
     </div>
   </div>
 </nav>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
 <style>
-  
+  .search-container {
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    max-width: 768px;
+    width: 70%;
+    transition: all 0.3s ease;
+    position: relative;
+    left: 30rem;
+  }
 
-    .search-container {
-        background-color: white;
-        border-radius: 50px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        padding: 10px;
-        max-width: 768px;
-        width: 70%;
-        transition: all 0.3s ease;
-        position: relative;
-        left: 30rem;
-    }
+  .search-container:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+  }
 
-    .search-container:hover {
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        display: inline-block;
-    }
+  .form-control.search-input {
+    border: none;
+    background: transparent;
+    padding-left: 20px;
+    font-size: 1rem;
+    height: 50px;
+  }
 
-    .form-control.search-input {
-        border: none;
-        background: transparent;
-        padding-left: 20px;
-        font-size: 1rem;
-        height: 50px;
-    }
+  .form-control.search-input:focus {
+    box-shadow: none;
+    outline: none;
+  }
 
-    .form-control.search-input:focus {
-        box-shadow: none;
-        outline: none;
-    }
+  .btn-search {
+    background-color: #007bff;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    border: none;
+    transition: all 0.3s ease;
+  }
 
-    .btn-search {
-        background-color: #007bff;
-        color: white;
-        border-radius: 50px;
-        padding: 10px 20px;
-        border: none;
-        transition: all 0.3s ease;
-    }
+  .btn-search:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
 
-    .btn-search:hover {
-        background-color: #0056b3;
-        transform: scale(1.05);
-    }
+  /* increase specificity + force inline layout */
+  /* same color as Explore */
+  .navbar-nav .nav-link.host-link {
+    display: inline-flex;
+    align-items: center;
 
-    /* .search-icon {
+    font-weight: 500;
+    color: #ff385c !important; /* SAME as Explore */
+
+    padding: 6px 14px;
+    border-radius: 999px;
+
+    background-color: transparent;
+    border: 1px solid transparent;
+
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* subtle hover */
+  .navbar-nav .nav-link.host-link:hover {
+    background-color: rgba(255, 56, 92, 0.08); /* light coral tint */
+    border-color: #ff385c;
+  }
+
+  .nav-link.explore-link {
+    font-weight: 600;
+    color: #ff385c !important;
+    position: relative;
+  }
+
+  .nav-link.explore-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: #ff385c;
+    border-radius: 2px;
+  }
+
+  /* Logout styling */
+  .navbar-nav .nav-link.logout-link {
+    display: inline-flex;
+    align-items: center;
+
+    font-weight: 500;
+    color: #ff385c !important; /* Airbnb coral */
+
+    padding: 6px 14px;
+    border-radius: 999px;
+
+    border: 1px solid transparent;
+    background-color: transparent;
+
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* subtle hover */
+  .navbar-nav .nav-link.logout-link:hover {
+    background-color: rgba(255, 56, 92, 0.1);
+    border-color: #ff385c;
+  }
+
+  /* SIGN UP – primary button */
+  .navbar-nav .nav-link.signup-link {
+    display: inline-flex;
+    align-items: center;
+
+    font-weight: 600;
+    color: #fff !important;
+
+    padding: 6px 16px;
+    border-radius: 999px;
+
+    margin-right: 8px;
+
+    background-color: #ff385c; /* Airbnb coral */
+    border: 1px solid #ff385c;
+
+    transition: background-color 0.2s ease;
+  }
+
+  .navbar-nav .nav-link.signup-link:hover {
+    background-color: #e0314f;
+  }
+
+  /* LOG IN – secondary button */
+  .navbar-nav .nav-link.login-link {
+    display: inline-flex;
+    align-items: center;
+
+    font-weight: 500;
+    color: #ff385c !important;
+
+    padding: 6px 16px;
+    border-radius: 999px;
+
+    border: 1px solid #ff385c;
+    background-color: transparent;
+
+    transition: background-color 0.2s ease;
+  }
+
+  .navbar-nav .nav-link.login-link:hover {
+    background-color: rgba(255, 56, 92, 0.08);
+  }
+
+  /* .search-icon {
         color: #6c757d;
         
         left: 35px;

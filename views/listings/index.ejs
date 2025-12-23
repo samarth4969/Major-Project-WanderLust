@@ -30,19 +30,25 @@
             opacity: 1;
         }
 
-        .border1 {
+       .border1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-            padding: 10px 40px 40px;
-        }
+    padding: 8px 14px;
+    border-radius: 20px;
 
-        .border1:hover {
-            height: 50px;
-            text-align: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
 
-            border-radius: 10px;
+    transition: border-color 0.2s ease;
+}
 
-            border: 2px solid black;
-        }
+.border1:hover {
+    border-color: #999;   /* simple grey hover */
+}
+
+
 
         .tax-info {
             display: none;
@@ -52,77 +58,68 @@
     <body>
         <div id="filters">
             <div class="filter">
-                <i class="fa-solid fa-ticket-simple"></i>
-                <p>icons</p>
+        <i class="fa-solid fa-building"></i>
+        <p>Apartment</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-mug-hot"></i>
-                <p>Bed&Breakfast</p>
+    <div class="filter">
+        <i class="fa-solid fa-house"></i>
+        <p>Villa</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-cow"></i>
-                <p>Farm</p>
+    <div class="filter">
+        <i class="fa-solid fa-tree"></i>
+        <p>Cottage</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-satellite"></i>
-                <p>OMG!</p>
+    <div class="filter">
+        <i class="fa-solid fa-city"></i>
+        <p>Flat</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-snowflake"></i>
-                <p>Arctic</p>
+    <div class="filter">
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <p>Resort</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-fire"></i>
-                <p>Trending</p>
+    <div class="filter">
+        <i class="fa-solid fa-house-user"></i>
+        <p>Homestay</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-water"></i>
-                <p>Lake</p>
+    <div class="filter">
+        <i class="fa-solid fa-tractor"></i>
+        <p>Farmhouse</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-umbrella-beach"></i>
-                <p>Beach</p>
+    <div class="filter">
+        <i class="fa-solid fa-water"></i>
+        <p>Beach House</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-satellite"></i>
-                <p><a href="/category/OMG">OMG!</a></p>
+    <div class="filter">
+        <i class="fa-solid fa-mountain"></i>
+        <p>Mountain Stay</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-mug-hot"></i>
-                <p>Bed&Breakfast</p>
+    <div class="filter">
+        <i class="fa-solid fa-gem"></i>
+        <p>Luxury Stay</p>
+    </div>
 
-            </div>
-            <div class="filter">
-                <i class="fa-solid fa-cow"></i>
-                <p>
-                    <a href="/category/Farm">Farm</a>
-                </p>
+    <div class="filter">
+        <i class="fa-solid fa-wallet"></i>
+        <p>Budget Stay</p>
+    </div>
 
-            </div>
-
-
-
-            <div class="filter setting">
-                <i class="fa-solid fa-sliders">
-                </i>
-                <p>filters</p>
-
-
-
-            </div>
-            <div class="form-check-reverse border1 filter form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Display total before taxces</label>
-            </div>
+    
+           <!-- Tax toggle (keep this) -->
+    <div class="form-check-reverse border1 filter form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+            Display total before taxes
+        </label>
+    </div>
 
         </div>
 

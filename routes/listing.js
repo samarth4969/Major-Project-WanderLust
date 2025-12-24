@@ -1,24 +1,48 @@
 const express = require("express");
 const router = express.Router();
+
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 const listingController = require("../controller/listing.js");
-const multer  = require('multer');
+
+const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 
-router.route("/")
-    .get(wrapAsync(listingController.index))
-    .post(isLoggedIn, upload.single('listing[image]'), validateListing, wrapAsync(listingController.createListing));
+/* INDEX (All listings + Category filter) */
+router.get("/", wrapAsync(listingController.index));
 
-// NEW LISTING PAGE
+/* CREATE LISTING */
+router.post(
+  "/",
+  isLoggedIn,
+  upload.single("listing[image]"),
+  validateListing,
+  wrapAsync(listingController.createListing)
+);
+
+/* NEW LISTING FORM */
 router.get("/new", isLoggedIn, wrapAsync(listingController.rendernewForm));
 
-router.route("/:id")
-    .get(wrapAsync(listingController.showListing))   // ← main fix
-    .put(isLoggedIn, isOwner, upload.single('listing[image]'), validateListing, wrapAsync(listingController.updateListing))
-    .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
+/* SHOW / UPDATE / DELETE */
+router
+  .route("/:id")
+  .get(wrapAsync(listingController.showListing))
+  .put(
+    isLoggedIn,
+    isOwner,
+    upload.single("listing[image]"),
+    validateListing,
+    wrapAsync(listingController.updateListing)
+  )
+  .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
-router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.rendereditForm));
+/* EDIT FORM */
+router.get(
+  "/:id/edit",
+  isLoggedIn,
+  isOwner,
+  wrapAsync(listingController.rendereditForm)
+);
 
 module.exports = router;

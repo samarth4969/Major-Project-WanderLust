@@ -1,118 +1,141 @@
-body{
-    /* font-family: "Plus Jakarta Sans", sans-serif; */
-    font-family: "Plus Jakarta Sans", sans-serif !important;
-};
+body {
+  /* font-family: "Plus Jakarta Sans", sans-serif; */
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
 
 /* NAvBAr */
 
 .navbar-brand {
-    height: 5rem;
-    background-color: white;
+  height: 5rem;
+  background-color: white;
 }
 
 .fa-compass {
-    color: #fe424d;
-    font-size: 2rem;
-
+  color: #fe424d;
+  font-size: 2rem;
 }
 .nav-link {
-    font-size:#222222  !important;
+  font-size: #222222 !important;
 }
 
 /* footer */
 
-.f-container{
-    background-color: rgb(255, 255, 255);
-    height: 8rem;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    
+.f-container {
+  background-color: rgb(255, 255, 255);
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.f-socilas{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+.f-socilas {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
-.f-socilas i{
-    font-size: 1.4rem;
-    margin-left: 1rem;
-}
-
-.f-tools{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    
-    text-align: center;
+.f-socilas i {
+  font-size: 1.4rem;
+  margin-left: 1rem;
 }
 
-.f-tools a{
-    text-decoration: none;
-    color: black;
-    margin-left: 2rem;
+.f-tools {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  text-align: center;
 }
 
+.f-tools a {
+  text-decoration: none;
+  color: black;
+  margin-left: 2rem;
+}
 
 /* Cards */
 
-.listing-card{
-    border: none !important;
-    margin-bottom:2rem !important ;
+.listing-card {
+  border: none !important;
+  margin-bottom: 2rem !important ;
 }
 
-
-.card-img-top{
-    border-radius: 1rem !important;
-    width: 100% !important;
-    object-fit: cover !important;
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
 }
 
-.card-body{
-    padding: 0 !important;
+.card-body {
+  padding: 0 !important;
 }
 
-.card-text-title{
-    font-weight: 700 !important;
+.card-text-title {
+  font-weight: 700 !important;
 }
-.card-link{
-    text-decoration: none;
+.card-link {
+  text-decoration: none;
 }
 
 /* Card Effect */
 
-
-.add-btn{
-    background-color: #fe424d !important;
-    border: none !important;
-    color: white !important;
+.add-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+  color: white !important;
 }
 
 /* Show pages */
 
-.show-img{
-    height: 30vh;
+.show-img {
+  height: 30vh;
 }
 
-.font-title{
-    font-size: 1.2rem;
+.font-title {
+  font-size: 1.2rem;
 }
 
-.btns{
-    display: flex;
+.btns {
+  display: flex;
 }
 
-.image-ratio{
-    height: 200px;
-    width: 250px;
+.image-ratio {
+  height: 200px;
+  width: 250px;
 }
 
 /* MAp */
 
-#map{
-    height: 400px;
-    width: 80vh;
+#map {
+  height: 400px;
+  width: 80vh;
+}
+
+/* Fix navbar overlap on mobile */
+@media (max-width: 768px) {
+  .navbar-nav .nav-link {
+    display: block !important;
+    width: 100%;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  /* Disable hover expansion on mobile */
+  .navbar-nav .nav-link:hover {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  /* Specifically for host button */
+  .navbar-nav .host-link {
+    padding: 8px 12px;
+  }
+
+  /* Auth buttons spacing */
+  .navbar-nav .signup-link,
+  .navbar-nav .login-link {
+    width: 100%;
+    text-align: center;
+  }
 }
